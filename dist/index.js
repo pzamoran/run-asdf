@@ -1167,9 +1167,7 @@ if (require.main === require.cache[eval('__filename')]) {
 
 async function main() {
   try {
-    const asdfPath = core.getInput('asdf-path')
-    core.debug('hola')
-    core.debug('adios')
+    const asdfPath = path.join(os.homedir(), core.getInput('asdf-path'));
     /*const version = core.getInput('asdf-version')
     const platform = os.platform()
     let arch = os.arch()
@@ -1194,10 +1192,9 @@ async function main() {
     }*/
 
     //await chmod(path.join(toolPath, 'yq'), 0o755) // just in case we haven't preserved the executable bit
-    core.log
+
     core.exportVariable("ASDF_DIR", asdfPath);
     core.exportVariable("ASDF_DATA_DIR", asdfPath);
-    core.debug('hola')
     core.addPath(`${asdfPath}/bin`);
     core.addPath(`${asdfPath}/shims`);
   } catch (error) {

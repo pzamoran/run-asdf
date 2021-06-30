@@ -19,7 +19,7 @@ if (require.main === module) {
 
 async function main() {
   try {
-    const asdfPath = path.join(os.homedir(), core.getInput('asdf-path');
+    const asdfPath = path.join(os.homedir(), core.getInput('asdf-path'));
     /*const version = core.getInput('asdf-version')
     const platform = os.platform()
     let arch = os.arch()
