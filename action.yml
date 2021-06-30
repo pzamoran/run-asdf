@@ -1,0 +1,13 @@
+# such active yaml!
+name: 'run-asdf'
+description: 'Install a version of the venerable YQ tool'
+inputs:
+  asdf-path:  # id of input
+    description: 'Default ASDF Path'
+    required: false
+    default: '.asdf'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+icon: book-open
+color: '#FFFF00'
