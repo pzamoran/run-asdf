@@ -1,0 +1,51 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  codeql:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14.x
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v5.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_branches: master
+          dry_run: true
+
+      - name: Compile
+        run: |
+          npm run build
+
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v7.0.0
+        with:
+          message: "RELEASE-uploading Npm dist for ${{steps.tag_version.outputs.new_version}}"
+
+
+      - name: "Create release"
+        id: create_release
+        uses: actions/create-release@v1.1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{steps.tag_version.outputs.new_tag}}
+          release_name: Release ${{steps.tag_version.outputs.new_tag}}
+          body: |
+            ${{steps.tag_version.outputs.change_log}}
+          draft: false
+          prerelease: false
+        
