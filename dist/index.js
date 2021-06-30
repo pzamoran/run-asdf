@@ -127,6 +127,7 @@ exports.issueCommand = issueCommand;
 const { promisify } = __webpack_require__(669)
 const path = __webpack_require__(622)
 const os = __webpack_require__(87)
+const fs = __webpack_require__(747)
 
 const core = __webpack_require__(470)
 
