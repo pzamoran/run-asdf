@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Chris Dickinson <chris@neversaw.us> (http://neversaw.us/)",
+  "author": "Pablo Zamorano <tpaxle@gmail.com> ",
   "license": "Apache-2.0",
   "dependencies": {
     "@actions/core": "^1.2.6",
