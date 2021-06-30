@@ -1195,8 +1195,9 @@ async function main() {
 
     core.exportVariable("ASDF_DIR", asdfPath);
     core.exportVariable("ASDF_DATA_DIR", asdfPath);
-    core.addPath(`${asdfPath}/bin`);
-    core.addPath(`${asdfPath}/shims`);
+    //core.addPath(`${asdfPath}/bin`);
+    //core.addPath(`${asdfPath}/shims`);
+
   } catch (error) {
     core.setFailed(error.message)
   }
