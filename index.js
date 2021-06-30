@@ -17,10 +17,12 @@ if (require.main === module) {
   })
 }
 
-async function main () {
+async function main() {
   try {
-    const url = core.getInput('yq-url')
-    const version = core.getInput('yq-version')
+    const asdfPath = core.getInput('asdf-path')
+    core.debug('hola')
+    core.debug('adios')
+    /*const version = core.getInput('asdf-version')
     const platform = os.platform()
     let arch = os.arch()
     if (arch === 'x64') {
@@ -41,10 +43,15 @@ async function main () {
 
       const downloadPath = await cache.downloadTool(rendered)
       toolPath = await cache.cacheFile(downloadPath, 'yq', 'yq', version)
-    }
+    }*/
 
-    await chmod(path.join(toolPath, 'yq'), 0o755) // just in case we haven't preserved the executable bit
-    core.addPath(toolPath)
+    //await chmod(path.join(toolPath, 'yq'), 0o755) // just in case we haven't preserved the executable bit
+    core.log
+    core.exportVariable("ASDF_DIR", asdfPath);
+    core.exportVariable("ASDF_DATA_DIR", asdfPath);
+    core.debug('hola')
+    core.addPath(`${asdfPath}/bin`);
+    core.addPath(`${asdfPath}/shims`);
   } catch (error) {
     core.setFailed(error.message)
   }

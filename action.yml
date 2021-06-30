@@ -1,6 +1,6 @@
 # such active yaml!
 name: 'run-asdf'
-description: 'Install a version of the venerable YQ tool'
+description: 'Set path to asdf software'
 inputs:
   asdf-path:  # id of input
     description: 'Default ASDF Path'
